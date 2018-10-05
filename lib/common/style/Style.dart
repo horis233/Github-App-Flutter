@@ -32,4 +32,6 @@ class GithubConstant {}
 
 class GithubStrings {
   static const String login_text = "Sign In";
+  static const String login_username_hint_text = "Username";
+  static const String login_password_hint_text = "Password";
 }

@@ -1,4 +1,3 @@
-import 'dart:_http';
 import 'package:dio/dio.dart';
 import 'package:gsy_github_app_flutter/common/net/Code.dart';
 import 'dart:collection';
@@ -15,7 +14,7 @@ class HttpManager {
     "authorizationCode": null,
   };
 
-  static netFetch(url, params, Map<String, String> header, text, Options option) async {
+  static netFetch(url, params, Map<String, String> header, Options option) async {
 
     /*var isConnected = await NetInfo.isConnected.fetch().done;
       if (!isConnected) {
@@ -50,7 +49,7 @@ class HttpManager {
       }
     }
     try {
-      if (option.contentType != null && option.contentType == ContentType.text) {
+      if (option.contentType != null && option.contentType.primaryType == "text") {
         return new ResultData(response.data, true, Code.SUCCESS);
       } else {
         var responseJson = await response.data;
