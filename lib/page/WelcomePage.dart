@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:gsy_github_app_flutter/page/HomePage.dart';
 import 'package:gsy_github_app_flutter/page/LoginPage.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -9,9 +8,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     // add into event list
     new Future.delayed(const Duration(seconds: 2), () {
-      Navigator
-          .of(context)
-          .pushReplacement(new MaterialPageRoute(builder: (context) {
+      Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context) {
         return new LoginPage();
       }));
     });

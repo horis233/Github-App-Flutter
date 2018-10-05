@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gsy_github_app_flutter/common/style/Style.dart';
-import 'package:gsy_github_app_flutter/widget/FlexButton.dart';
+import 'package:gsy_github_app_flutter/widget/GithubButton.dart';
 import 'package:gsy_github_app_flutter/widget/InputWidget.dart';
 
 class LoginPage extends StatelessWidget {
@@ -23,8 +23,8 @@ class LoginPage extends StatelessWidget {
                       children: <Widget>[
                         new Image(
                             image: new AssetImage('static/images/logo.png'),
-                            width: 80.0,
-                            height: 80.0),
+                            width: 90.0,
+                            height: 90.0),
                         new Padding(padding: new EdgeInsets.all(10.0)),
                         new InputWidget(
                             hintText: "11111", iconData: Icons.access_alarm),

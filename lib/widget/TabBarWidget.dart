@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
-
 class TabBarWidget extends StatefulWidget {
-
-
   static const int BOTTOM_TAB = 1;
 
   static const int TOP_TAB = 2;
@@ -59,10 +56,7 @@ class _TabBarState extends State<TabBarWidget>
   void initState() {
     super.initState();
     if (this._type == TabBarWidget.BOTTOM_TAB) {
-      _tabController = new TabController(
-          vsync: this,
-          length: 3
-          );
+      _tabController = new TabController(vsync: this, length: 3);
     }
   }
 
@@ -102,18 +96,13 @@ class _TabBarState extends State<TabBarWidget>
           backgroundColor: _backgroundColor,
           title: new Text(_title),
         ),
-        body: new TabBarView(
-
-            controller: _tabController,
-            children: _tabViews),
+        body: new TabBarView(controller: _tabController, children: _tabViews),
         bottomNavigationBar: new Material(
-
           color: Colors.deepOrange,
           child: new TabBar(
-
             controller: _tabController,
             tabs: _tabItems,
-            indicatorColor: _indicatorColor, 
+            indicatorColor: _indicatorColor,
           ),
         ));
   }

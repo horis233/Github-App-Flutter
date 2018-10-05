@@ -30,7 +30,6 @@ class GithubColors {
 
 class GithubConstant {}
 
-
 class GithubStrings {
   static const String login_text = "Sign In";
 }

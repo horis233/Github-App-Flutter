@@ -8,8 +8,10 @@ build/
 
 .flutter-plugins
 
-*.iml
-
 .idea/
 
 .gradle/
+
+ignoreConfig.dart
+
+static/
