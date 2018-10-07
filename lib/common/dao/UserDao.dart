@@ -31,7 +31,7 @@ class UserDao {
       print(res.data.toString());
     }
     if (callback != null) {
-      callback(res.result);
+      callback(res);
     }
   }
 }

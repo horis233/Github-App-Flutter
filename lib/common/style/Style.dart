@@ -34,4 +34,10 @@ class GithubStrings {
   static const String login_text = "Sign In";
   static const String login_username_hint_text = "Username";
   static const String login_password_hint_text = "Password";
+  static const String login_success = "Login Success";
+  static const String network_error_401 = "Unauthorized or Authorized Login Failed";
+  static const String network_error_403 = "403 Permission Error";
+  static const String network_error_404 = "404 Error";
+  static const String network_error_timeout = "Request Timed Out";
+  static const String network_error_unknown = "Other Exception";
 }

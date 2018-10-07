@@ -1,8 +1,9 @@
-import 'package:dio/dio.dart';
-import 'package:gsy_github_app_flutter/common/net/Code.dart';
 import 'dart:collection';
+
+import 'package:dio/dio.dart';
 import 'package:gsy_github_app_flutter/common/config/Config.dart';
 import 'package:gsy_github_app_flutter/common/local/LocalStorage.dart';
+import 'package:gsy_github_app_flutter/common/net/Code.dart';
 import 'package:gsy_github_app_flutter/common/net/ResultData.dart';
 
 class HttpManager {
@@ -14,8 +15,8 @@ class HttpManager {
     "authorizationCode": null,
   };
 
-  static netFetch(url, params, Map<String, String> header, Options option) async {
-
+  static netFetch(
+      url, params, Map<String, String> header, Options option) async {
     /*var isConnected = await NetInfo.isConnected.fetch().done;
       if (!isConnected) {
       return {
@@ -38,7 +39,27 @@ class HttpManager {
     headers["Authorization"] = optionParams["authorizationCode"];
     option.headers = headers;
     Dio dio = new Dio();
-    Response response = await dio.get(url, data: params, options: option);
+    Response response;
+    try {
+      response = await dio.get(url, data: params, options: option);
+    } on DioError catch (e) {
+      Response errorResponse;
+      if (e.response != null) {
+        errorResponse = e.response;
+      } else {
+        errorResponse = new Response(statusCode: 666);
+      }
+      if (e.type == DioErrorType.CONNECT_TIMEOUT) {
+        errorResponse.statusCode = Code.NETWORK_TIMEOUT;
+      }
+      if (Config.DEBUG) {
+        print('Request exception: ' + e.toString());
+      }
+      return new ResultData(
+          Code.errorHandleFunction(errorResponse.statusCode, e.message),
+          false,
+          errorResponse.statusCode);
+    }
     if (Config.DEBUG) {
       print('req url: ' + url);
       if (params != null) {
@@ -49,23 +70,28 @@ class HttpManager {
       }
     }
     try {
-      if (option.contentType != null && option.contentType.primaryType == "text") {
+      if (option.contentType != null &&
+          option.contentType.primaryType == "text") {
         return new ResultData(response.data, true, Code.SUCCESS);
       } else {
         var responseJson = await response.data;
         if (response.statusCode == 201 && responseJson.token != null) {
           optionParams["authorizationCode"] = 'token ' + responseJson.token;
-          await LocalStorage.save(Config.TOKEN_KEY, optionParams["authorizationCode"]);
+          await LocalStorage.save(
+              Config.TOKEN_KEY, optionParams["authorizationCode"]);
         }
       }
       if (response.statusCode == 200 || response.statusCode == 201) {
-        return new ResultData(response.data, true, Code.SUCCESS, headers: response.headers);
+        return new ResultData(response.data, true, Code.SUCCESS,
+            headers: response.headers);
       }
     } catch (e) {
       print(e.toString() + url);
-      return new ResultData(response.data, false, response.statusCode, headers: response.headers);
+      return new ResultData(response.data, false, response.statusCode,
+          headers: response.headers);
     }
-    return new ResultData(Code.errorHandleFunction(response.statusCode), false, response.statusCode);
+    return new ResultData(Code.errorHandleFunction(response.statusCode, ""), false,
+        response.statusCode);
   }
 
   ///clear auth

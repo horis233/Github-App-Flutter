@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gsy_github_app_flutter/common/config/Config.dart';
 import 'package:gsy_github_app_flutter/common/dao/UserDao.dart';
 import 'package:gsy_github_app_flutter/common/local/LocalStorage.dart';
@@ -14,7 +15,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   var _userName = "";
   var _password = "";
   final TextEditingController userController = new TextEditingController();
@@ -71,7 +71,6 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: GithubStrings.login_password_hint_text,
                           iconData: Icons.access_alarm,
                           onChanged: (String value) {
-                            print(value);
                             _password = value;
                           },
                           controller: pwController,
@@ -81,15 +80,20 @@ class _LoginPageState extends State<LoginPage> {
                           text: GithubStrings.login_text,
                           color: Color(GithubColors.primaryValue),
                           textColor: Color(GithubColors.textWhite),
-                            onPress: () {
-                              if (_userName == null || _userName.length == 0) {
-                                return;
+                          onPress: () {
+                            if (_userName == null || _userName.length == 0) {
+                              return;
+                            }
+                            if (_password == null || _password.length == 0) {
+                              return;
+                            }
+                            UserDao.login(_userName, _password, (data) {
+                              if (data != null && data.result == true) {
+                                Fluttertoast.showToast(
+                                    msg: GithubStrings.login_success);
                               }
-                              if (_password == null || _password.length == 0) {
-                                return;
-                              }
-                              UserDao.login(_userName, _password, (data) {});
-                            },
+                            });
+                          },
                         )
                       ],
                     )))));
