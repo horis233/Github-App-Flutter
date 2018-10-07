@@ -70,6 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                         new InputWidget(
                           hintText: GithubStrings.login_password_hint_text,
                           iconData: Icons.access_alarm,
+                          obscureText: true,
                           onChanged: (String value) {
                             _password = value;
                           },
