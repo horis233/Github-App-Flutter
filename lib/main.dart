@@ -15,7 +15,7 @@ void main() {
 }
 
 class FlutterReduxApp extends StatelessWidget {
-  final store = new Store<GithubState>(counterReducer, initialState:  new GithubState(userInfo: User.empty()));
+  final store = new Store<GithubState>(appReducer, initialState:  new GithubState(userInfo: User.empty()));
   FlutterReduxApp({Key key}) : super(key: key);
 
   @override

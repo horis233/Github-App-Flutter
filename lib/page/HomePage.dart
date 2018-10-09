@@ -4,6 +4,7 @@ import 'package:Github_app_flutter/common/model/User.dart';
 import 'package:Github_app_flutter/common/redux/GithubState.dart';
 import 'package:flutter/material.dart';
 import 'package:Github_app_flutter/common/style/Style.dart';
+import 'package:Github_app_flutter/common/redux/UserRedux.dart';
 import 'package:Github_app_flutter/widget/TabBarWidget.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
@@ -23,9 +24,9 @@ class HomePage extends StatelessWidget {
             builder: (context, store) {
               new Future.delayed(const Duration(seconds: 2), () {
                 User user = store.state.userInfo;
-                user.login = "ffff";
-                user.name = "ttttt";
-                store.dispatch(new UserActions(user));
+                user.login = "new login";
+                user.name = "new name";
+                store.dispatch(new UpdateUserAction(user));
               });
               return new Text(
                 store.state.userInfo.login,

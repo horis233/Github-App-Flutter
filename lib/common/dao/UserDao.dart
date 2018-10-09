@@ -8,8 +8,8 @@ import 'package:Github_app_flutter/common/local/LocalStorage.dart';
 import 'package:Github_app_flutter/common/model/User.dart';
 import 'package:Github_app_flutter/common/net/Address.dart';
 import 'package:Github_app_flutter/common/net/Api.dart';
+import 'package:Github_app_flutter/common/redux/UserRedux.dart';
 import 'package:redux/redux.dart';
-import 'package:Github_app_flutter/common/redux/GithubState.dart';
 
 class UserDao {
   static login(userName, password, callback) async {
@@ -49,7 +49,7 @@ class UserDao {
     var token = await LocalStorage.get(Config.TOKEN_KEY);
     var res = await getUserInfoLocal();
     if (res != null && res.result && token != null) {
-      store.dispatch(UserActions(res.data));
+      store.dispatch(UpdateUserAction(res.data));
     }
     return new DataResult(res.data, (res.result && (token != null)));
   }

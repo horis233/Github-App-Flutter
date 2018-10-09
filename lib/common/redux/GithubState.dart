@@ -1,4 +1,5 @@
 import 'package:Github_app_flutter/common/model/User.dart';
+import 'package:Github_app_flutter/common/redux/UserRedux.dart';
 
 class GithubState {
   User userInfo;
@@ -7,15 +8,8 @@ class GithubState {
 }
 
 // One simple action: Increment
-class UserActions {
-  final User userInfo;
-
-  UserActions(this.userInfo);
-}
-
-GithubState counterReducer(GithubState state, dynamic action) {
-  if (action is UserActions) {
-    state.userInfo = action.userInfo;
-  }
-  return state;
+GithubState appReducer(GithubState state, action) {
+  return GithubState(
+    userInfo: UserReducer(state.userInfo, action),
+  );
 }
