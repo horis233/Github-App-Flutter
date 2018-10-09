@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gsy_github_app_flutter/page/WelcomePage.dart';
+import 'package:Github_app_flutter/page/WelcomePage.dart';
 
 void main() => runApp(new MyApp());
 

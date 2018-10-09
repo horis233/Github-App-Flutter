@@ -1,5 +1,5 @@
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:gsy_github_app_flutter/common/style/Style.dart';
+import 'package:Github_app_flutter/common/style/Style.dart';
 
 ///Error code
 class Code {

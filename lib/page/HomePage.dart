@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gsy_github_app_flutter/common/style/Style.dart';
-import 'package:gsy_github_app_flutter/widget/TabBarWidget.dart';
+import 'package:Github_app_flutter/common/style/Style.dart';
+import 'package:Github_app_flutter/widget/TabBarWidget.dart';
 
 class HomePage extends StatelessWidget {
   // This widget is the root of your application.

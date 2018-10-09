@@ -1,4 +1,4 @@
-import 'package:gsy_github_app_flutter/common/config/Config.dart';
+import 'package:Github_app_flutter/common/config/Config.dart';
 
 ///Address
 class Address {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:gsy_github_app_flutter/common/config/Config.dart';
-import 'package:gsy_github_app_flutter/common/dao/UserDao.dart';
-import 'package:gsy_github_app_flutter/common/local/LocalStorage.dart';
-import 'package:gsy_github_app_flutter/common/style/Style.dart';
-import 'package:gsy_github_app_flutter/widget/GithubButton.dart';
-import 'package:gsy_github_app_flutter/widget/InputWidget.dart';
+import 'package:Github_app_flutter/common/config/Config.dart';
+import 'package:Github_app_flutter/common/dao/UserDao.dart';
+import 'package:Github_app_flutter/common/local/LocalStorage.dart';
+import 'package:Github_app_flutter/common/style/Style.dart';
+import 'package:Github_app_flutter/widget/GithubButton.dart';
+import 'package:Github_app_flutter/widget/InputWidget.dart';
 
 class LoginPage extends StatefulWidget {
   @override

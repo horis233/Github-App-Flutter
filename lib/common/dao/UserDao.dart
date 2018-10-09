@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:gsy_github_app_flutter/common/config/Config.dart';
-import 'package:gsy_github_app_flutter/common/config/ignoreConfig.dart';
-import 'package:gsy_github_app_flutter/common/dao/DaoResult.dart';
-import 'package:gsy_github_app_flutter/common/local/LocalStorage.dart';
-import 'package:gsy_github_app_flutter/common/model/User.dart';
-import 'package:gsy_github_app_flutter/common/net/Address.dart';
-import 'package:gsy_github_app_flutter/common/net/Api.dart';
+import 'package:Github_app_flutter/common/config/Config.dart';
+import 'package:Github_app_flutter/common/config/ignoreConfig.dart';
+import 'package:Github_app_flutter/common/dao/DaoResult.dart';
+import 'package:Github_app_flutter/common/local/LocalStorage.dart';
+import 'package:Github_app_flutter/common/model/User.dart';
+import 'package:Github_app_flutter/common/net/Address.dart';
+import 'package:Github_app_flutter/common/net/Api.dart';
 
 class UserDao {
   static login(userName, password, callback) async {
@@ -46,8 +46,8 @@ class UserDao {
   static initUserInfo() async {
     var token = await LocalStorage.get(Config.TOKEN_KEY);
     var res = await getUserInfoLocal();
-    if (res && res.result && token) {
-      //todo store
+    if (res != null && res.result && token != null) {
+      //todo dispatch store
     }
     return new DataResult(res.data, (res.result && (token != null)));
   }
@@ -56,8 +56,9 @@ class UserDao {
   static getUserInfoLocal() async {
     var userText = await LocalStorage.get(Config.USER_INFO);
     if (userText != null) {
-      var res = json.decode(userText);
-      return new DataResult(res.data, true);
+      var userMap = json.decode(userText);
+      User user = User.fromJson(userMap);
+      return new DataResult(user, true);
     } else {
       return new DataResult(null, false);
     }

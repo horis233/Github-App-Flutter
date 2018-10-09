@@ -1,10 +1,10 @@
 import 'dart:collection';
 
 import 'package:dio/dio.dart';
-import 'package:gsy_github_app_flutter/common/config/Config.dart';
-import 'package:gsy_github_app_flutter/common/local/LocalStorage.dart';
-import 'package:gsy_github_app_flutter/common/net/Code.dart';
-import 'package:gsy_github_app_flutter/common/net/ResultData.dart';
+import 'package:Github_app_flutter/common/config/Config.dart';
+import 'package:Github_app_flutter/common/local/LocalStorage.dart';
+import 'package:Github_app_flutter/common/net/Code.dart';
+import 'package:Github_app_flutter/common/net/ResultData.dart';
 
 class HttpManager {
   static const CONTENT_TYPE_JSON = "application/json";

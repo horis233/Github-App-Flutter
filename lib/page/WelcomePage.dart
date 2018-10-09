@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:gsy_github_app_flutter/common/dao/UserDao.dart';
-import 'package:gsy_github_app_flutter/page/HomePage.dart';
-import 'package:gsy_github_app_flutter/page/LoginPage.dart';
+import 'package:Github_app_flutter/common/dao/UserDao.dart';
+import 'package:Github_app_flutter/page/HomePage.dart';
+import 'package:Github_app_flutter/page/LoginPage.dart';
 
 class WelcomePage extends StatelessWidget {
   @override
@@ -31,7 +31,7 @@ class WelcomePage extends StatelessWidget {
     return new Container(
       color: Colors.white,
       child: new Center(
-        child: new Text("Welcom", style: new TextStyle(color: Colors.black, fontSize:22.0)),
+        child: new Text("Welcome", style: new TextStyle(color: Colors.black, fontSize:22.0)),
       ),
     );
   }
